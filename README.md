@@ -35,7 +35,7 @@ src/
 │   │           │   ├── builder/
 │   │           │   └── prototype/
 │   │           ├── structural/          # Structural patterns
-│   │           │   ├── adapter/
+│   │           │   ├── adapter/         ✅ Implemented
 │   │           │   ├── decorator/       ✅ Implemented
 │   │           │   ├── facade/
 │   │           │   └── proxy/
@@ -66,7 +66,7 @@ src/
 - **Prototype**: Creates objects by cloning existing instances
 
 ### Structural Patterns
-- **Adapter**: Allows incompatible interfaces to work together
+- **✅ Adapter**: Allows incompatible interfaces to work together (Media player example)
 - **✅ Decorator**: Adds behavior to objects dynamically (Coffee shop example)
 - **Facade**: Provides a simplified interface to complex subsystems
 - **Proxy**: Provides a placeholder/surrogate for another object
@@ -121,6 +121,7 @@ Use the convenient demo runner script to explore different patterns:
 ./run-demo.sh strategy    # Strategy Pattern Demo
 ./run-demo.sh observer    # Observer Pattern Demo
 ./run-demo.sh decorator   # Decorator Pattern Demo
+./run-demo.sh adapter     # Adapter Pattern Demo
 ```
 
 Or run demos directly with Maven:
@@ -139,6 +140,9 @@ mvn exec:java -Dexec.mainClass="com.designpatterns.behavioral.observer.ObserverD
 
 # Decorator Pattern
 mvn exec:java -Dexec.mainClass="com.designpatterns.structural.decorator.DecoratorDemo"
+
+# Adapter Pattern
+mvn exec:java -Dexec.mainClass="com.designpatterns.structural.adapter.AdapterDemo"
 ```
 
 ## 🧪 Running Tests
@@ -154,6 +158,7 @@ mvn test -Dtest="*Singleton*"
 mvn test -Dtest="*Strategy*"
 mvn test -Dtest="*Observer*"
 mvn test -Dtest="*Decorator*"
+mvn test -Dtest="*Adapter*"
 ```
 
 Generate test coverage report:
@@ -162,6 +167,20 @@ mvn jacoco:report
 ```
 
 ## 📚 Pattern Examples
+
+### Adapter Pattern
+The Adapter pattern implementation demonstrates how incompatible interfaces can work together:
+- **MediaPlayer** interface as the target interface that clients expect
+- **AdvancedMediaPlayer** interface as the adaptee interface with a generic `play()` method
+- **Mp4Player**, **VlcPlayer** as concrete adaptees that implement specific media formats
+- **MediaAdapter** that bridges the gap between MediaPlayer and AdvancedMediaPlayer interfaces
+- **AudioPlayer** as client that natively supports MP3 and uses adapters for other formats
+
+**Key Features:**
+- ✅ **SOLID Compliance**: Uses generic `play()` method instead of format-specific methods
+- ✅ **Open/Closed Principle**: New formats can be added without modifying existing interfaces
+- ✅ **Clean Architecture**: Simple, focused implementation without over-engineering
+- ✅ **Real-world Scenario**: Media player with format compatibility through adapters
 
 ### Decorator Pattern
 The Decorator pattern implementation includes:

@@ -11,6 +11,7 @@ if [ $# -eq 0 ]; then
     echo "  strategy        - Run Strategy Pattern Demo"
     echo "  observer        - Run Observer Pattern Demo"
     echo "  decorator       - Run Decorator Pattern Demo"
+    echo "  adapter         - Run Adapter Pattern Demo"
     echo ""
     echo "Usage: $0 <pattern-name>"
     echo "Example: $0 singleton"
@@ -44,9 +45,13 @@ case $PATTERN in
         echo "☕ Running Decorator Pattern Demo..."
         mvn exec:java -Dexec.mainClass="com.designpatterns.structural.decorator.DecoratorDemo" -q
         ;;
+    "adapter")
+        echo "🔌 Running Adapter Pattern Demo..."
+        mvn exec:java -Dexec.mainClass="com.designpatterns.structural.adapter.AdapterDemo" -q
+        ;;
     *)
         echo "❌ Unknown pattern: $PATTERN"
-        echo "Available patterns: singleton, factory, abstractfactory, strategy, observer, decorator"
+        echo "Available patterns: singleton, factory, abstractfactory, strategy, observer, decorator, adapter"
         exit 1
         ;;
-esac 
+esac
